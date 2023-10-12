@@ -4,6 +4,7 @@ import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 import GUI from "lil-gui";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 import {} from "three/examples/jsm/controls/OrbitControls";
+
 window.addEventListener("load", function () {
   init();
 });
@@ -79,7 +80,7 @@ function init() {
   /** Font */
   const fontLoader = new FontLoader();
 
-  fontLoader.load("./assets/fonts/Elice DigitalBaeum_Bold.json", (font) => {
+  fontLoader.load("/assets/fonts/EliceDigitalBaeum_Bold.json", (font) => {
     const textGeometry = new TextGeometry("태양, 달 그리고 지구", {
       font,
       size: 0.8,
