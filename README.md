@@ -2,4 +2,4 @@
 
 https://threejs.org/manual/#en/scenegraph
 
-![solar](./cube/public/assets/solar.png)
+![solar](./public/assets/solar.png)
