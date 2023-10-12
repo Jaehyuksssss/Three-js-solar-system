@@ -77,10 +77,9 @@ function init() {
 
   const clock = new THREE.Clock();
 
-  /** Font */
   const fontLoader = new FontLoader();
 
-  fontLoader.load("/fonts/EliceDigitalBaeum_Bold.json", (font) => {
+  fontLoader.load("/assets/fonts/EliceDigitalBaeum_Bold.json", (font) => {
     const textGeometry = new TextGeometry("태양, 달 그리고 지구", {
       font,
       size: 0.8,
@@ -88,8 +87,8 @@ function init() {
     });
     textGeometry.center();
 
-    const textMaterial = new THREE.MeshPhongMaterial({ color: 0x00c896 });
-    const text = new THREE.Mesh(textGeometry, textMaterial);
+    const textMetrial = new THREE.MeshPhongMaterial({ color: 0x00c896 });
+    const text = new THREE.Mesh(textGeometry, textMetrial);
     text.position.set(0, -3, 0);
     scene.add(text);
   });
