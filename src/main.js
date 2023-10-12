@@ -1,7 +1,9 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 import GUI from "lil-gui";
-
+import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
+import {} from "three/examples/jsm/controls/OrbitControls";
 window.addEventListener("load", function () {
   init();
 });
@@ -36,7 +38,11 @@ function init() {
 
   const sunGeometry = new THREE.SphereGeometry(2, 32, 32);
 
-  const sunMaterial = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+  const sunMaterial = new THREE.MeshBasicMaterial({
+    color: 0xffff00,
+    emissive: 0x112244,
+    emissiveIntensity: 0.5,
+  });
   const sun = new THREE.Mesh(sunGeometry, sunMaterial);
   scene.add(sun);
 
@@ -69,6 +75,26 @@ function init() {
   scene.add(light);
 
   const clock = new THREE.Clock();
+
+  /** Font */
+  const fontLoader = new FontLoader();
+
+  fontLoader.load("./assets/fonts/Elice DigitalBaeum_Bold.json", (font) => {
+    const textGeometry = new TextGeometry("태양, 달 그리고 지구", {
+      font,
+      size: 0.8,
+      height: 0.2,
+    });
+    textGeometry.center();
+
+    const textMetrial = new THREE.MeshPhongMaterial({ color: 0x00c896 });
+    const text = new THREE.Mesh(textGeometry, textMetrial);
+    text.position.set(0, -3, 0);
+    scene.add(text);
+  });
+
+  const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+  scene.add(ambientLight);
 
   render();
 
